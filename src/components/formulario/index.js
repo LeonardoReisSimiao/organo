@@ -4,22 +4,21 @@ import ComboBox from "../comboBox";
 import "./Formulario.css";
 import { useState } from "react";
 
-const Formulario = () => {
-  
-  const times = [
-    "Front-End",
-    "Back-End",
-    "Banco de Dados",
-    "Redes de Computadores",
-  ];
+const Formulario = (props) => {
 
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setimagem] = useState("");
+  const [time, setTime] = useState("");
 
   const aoSalvar = (evento) => {
     evento.preventDefault();
-    console.log("Form foi submetido =>", nome, cargo, imagem);
+    props.aoColaboradorCadastrado({
+      nome,
+      cargo,
+      imagem,
+      time
+    })
   };
 
   return (
@@ -31,23 +30,29 @@ const Formulario = () => {
           label="Nome"
           placeholder="Digite seu nome..."
           valor={nome}
-          aoAlterado={valor => setNome(valor)}
+          aoAlterado={(valor) => setNome(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Cargo"
           placeholder="Digite seu cargo..."
           valor={cargo}
-          aoAlterado={valor => setCargo(valor)}
+          aoAlterado={(valor) => setCargo(valor)}
         />
         <CampoTexto
           obrigatorio={true}
           label="Imagem"
           placeholder="Digite a url da sua imagem..."
           valor={imagem}
-          aoAlterado={valor => setimagem(valor)}
+          aoAlterado={(valor) => setimagem(valor)}
         />
-        <ComboBox obrigatorio={true} label="Times" itens={times} />
+        <ComboBox
+          obrigatorio={true}
+          label="Times"
+          itens={props.times}
+          valor={time}
+          aoAlterado={(valor) => setTime(valor)}
+        />
         <Botao>Criar Card</Botao>
       </form>
     </section>
