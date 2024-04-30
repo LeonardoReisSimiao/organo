@@ -5,7 +5,7 @@ import Time from "./components/time";
 import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
-<SpeedInsights/>
+
 
 function App() {
   const times = [
@@ -48,6 +48,7 @@ function App() {
           colaboradores={colaboradores.filter((colaborador) => colaborador.time === time.nome)}
         />
       ))}
+      <SpeedInsights/>
     </div>
   );
 }
