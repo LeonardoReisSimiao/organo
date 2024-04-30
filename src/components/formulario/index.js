@@ -8,7 +8,7 @@ const Formulario = (props) => {
 
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
-  const [imagem, setimagem] = useState("");
+  const [imagem, setImagem] = useState("");
   const [time, setTime] = useState("");
 
   const aoSalvar = (evento) => {
@@ -19,6 +19,10 @@ const Formulario = (props) => {
       imagem,
       time
     })
+    setNome('')
+    setCargo('')
+    setImagem('')
+    setTime('')
   };
 
   return (
@@ -44,7 +48,7 @@ const Formulario = (props) => {
           label="Imagem"
           placeholder="Digite a url da sua imagem..."
           valor={imagem}
-          aoAlterado={(valor) => setimagem(valor)}
+          aoAlterado={(valor) => setImagem(valor)}
         />
         <ComboBox
           obrigatorio={true}
