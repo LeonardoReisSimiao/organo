@@ -2,6 +2,10 @@ import { useState } from "react";
 import Banner from "./components/banner/Banner";
 import Formulario from "./components/formulario";
 import Time from "./components/time";
+import { SpeedInsights } from "@vercel/speed-insights/react"
+
+
+<SpeedInsights/>
 
 function App() {
   const times = [
